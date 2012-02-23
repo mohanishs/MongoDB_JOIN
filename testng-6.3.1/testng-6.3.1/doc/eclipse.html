@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <title>TestNG - Eclipse</title>
+        <script type="text/javascript" src="banner.js"></script>
+        <link rel="stylesheet" href="testng.css" type="text/css" />
+      </head>
+<body>
+
+<script type="text/javascript">
+    displayMenu("eclipse.html")
+</script>
+
+
+<h2 align="center">TestNG Eclipse plug-in</h2>
+<p>The TestNG Eclipse plug-in allows you to run your TestNG tests from Eclipse 
+and easily monitor their execution and their output. It has its own <a href="http://github.com/cbeust/testng-eclipse">project repository called <tt>testng-eclipse</tt></a>.</p>
+
+
+<h3>Table of Contents</h3>
+
+&nbsp;&nbsp;<a class="summary" href="#eclipse-installation">1 - Installation</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-creating">2 - Creating a TestNG class</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-create-launch">3 - Launch configurations</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-create-class">3.1 - From a class file</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-create-groups">3.2 - From groups</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-create-xml">3.3 - From an XML file</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-create-method">3.4 - From a method</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-listeners">3.5 - Specifying listeners and other settings</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-viewing">4 - Viewing the results</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-search">5 - Search</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-summary">6 - The Summary tab</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-quickfix">7 - Converting JUnit tests</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#eclipse-quickfixes">8 - Quick fixes</a>
+<br>
+&nbsp;&nbsp;<a class="summary" href="#testng-xml"></a>
+
+<!--
+  Installation
+-->
+<h3><a name="eclipse-installation">1 - Installation</a></h3><p>
+Once you have <a href="http://testng.org/doc/download.html">installed the plug-in</a>, restart Eclipse and select the menu <tt>Window / Show View 
+/ Other...</tt>&nbsp; and you should see the TestNG view listed in the Java category.</p><p align="center">
+<img border="0" src="http://testng.org/pictures/view.png" />
+</p>
+
+<!--
+  Creating
+-->
+<h3><a name="eclipse-creating">2 -Creating a TestNG class</a></h3><p>
+
+To create a new TestNG class, select the menu File / New / TestNG:
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/new-1.png" />
+</p>
+
+If you currently have a Java file open in the editor or if you have a Java file selected in the Navigator, the first page of the wizard will show you a list of all the public methods of that class and it will give you the option to select the ones you want to test. Each method you select on this page will be included in the new TestNG class with a default implementation that throws an exception, so you remember to implement it.
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/new-2.png" />
+</p>
+
+The next page lets you specify where that file will be created, whether it should contain default implementation for some configuration methods, if you'd like a data provider and finally, if a <tt>testng.xml</tt> file should be generated.
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/new-3.png" />
+</p>
+
+The plug-in will make a guess about the best location where this file should be created (for example, if you are using Maven, the default location will be under <tt>src/test/java</tt>).
+
+<h3><a name="eclipse-create-launch">3 - Launch configuration</a></h3><p>Once you have created classes that contain TestNG annotations and/or one or 
+more <tt>testng.xml</tt> files, you can create a TestNG Launch Configuration.&nbsp; 
+Select the <tt>Run / Run...</tt> (or <tt>Run / Debug...</tt>) menu and create a new TestNG 
+configuration:</p><p align="center">
+<img border="0" src="http://testng.org/pictures/launch.png" />
+</p>
+<p>You should change the name of this configuration and pick a project, which 
+can be selected by clicking on the <tt>Browse...</tt> button at the top of the window.</p><p>Then you choose to launch your TestNG tests in the following ways:</p><h4><a name="eclipse-launch-class">4.2.1 - From a class file</a></h4><p>Make sure the box near <tt>Class</tt> is checked and then pick a class from your 
+project.&nbsp; You can click on the <tt>Browse...</tt> button and pick it directly from a 
+list.&nbsp; This list only contains classes that contain TestNG annotations:</p><p align="center">
+<img border="0" src="http://testng.org/pictures/classes.png" />
+</p>
+
+<h4><a name="eclipse-create-groups">3.2 - From groups</a></h4>
+<p>If you only want to launch one or several groups, you can type them in the 
+text field or pick them from a list by clicking on the <tt>Browse...</tt> button&nbsp;
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/groups.png" />
+</p>
+
+
+<h4><a name="eclipse-create-xml">3.3 - From a definition file</a></h4>
+Finally, you can select a suite definition from your project.  It doesn't have to be named
+<tt>testng.xml</tt>, the plug-in will automatically identify all the applicable TestNG XML files 
+in your project:
+<p align="center">
+<img border="0" src="http://testng.org/pictures/suites.png" />
+</p>
+
+
+<h4>
+<a name="eclipse-create-method">3.4 - From a method </a>
+</h4>
+<p>This launch isn't accomplished from the Launch dialog but 
+directly from your Outline view:</p><p align="center">
+<img border="0" src="http://testng.org/pictures/outline.png" />
+</p>
+You can right-click on any test methods and select <tt>Run as... / TestNG test</tt> and only the selected
+method will be run (not shown on the above screenshot because I couldn't find a way to capture
+a contextual menu).<p>Method launching is also available from the Package 
+Explorer view and from the Java Browser perspective.</p><p>Once you have selected one of these launches, you can also choose the logging of level and also
+whether TestNG should run in 1.4 or 1.5 mode. Then you can launch the tests by 
+pressing the <tt>Debug</tt> (or <tt>Run</tt>) button, which will switch you to the Debug 
+perspective and will open the main TestNG view.</p>
+
+<h4>
+<a name="eclipse-listeners">3.5 -Specifying listeners and other settings </a>
+</h4>
+
+As you saw above, the plug-in will let you start tests in many different ways:  from an XML file, from a method, a class, etc...  When you are running an XML file, you can specify all the settings you want for this run in the XML file, but what if you want to run a package in parallel mode with specific listeners?  How can you configure the settings for all the launches that are not done from an XML file?
+
+<p>
+
+In order to give you access to the most flexibility, TestNG lets you specify an XML suite file for all these launches, which you can find in the Preferences menu:
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/template.png"/>
+</p>
+
+If you specify a valid suite file as "XML template file", TestNG will reuse all the settings found in this XML file, such as parallel, name, listeners, thread pool size, etc...  Only the <tt>&lt;test&gt;</tt> tags in this file will be ignored since the plug-in will replace these by a generated <tt>&lt;test&gt;</tt> tag that represents the launch you chose.
+
+<!--
+  Viewing
+-->
+<h3>
+<a name="eclipse-viewing">4 - Viewing the test results </a>
+</h3>
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/success.png" />
+</p>
+
+<p>The above view shows a successful run of the tests:&nbsp; the bar is green 
+and no failed tests are reported.&nbsp; The <tt>All tests</tt> tab shows you a list of 
+all the classes and methods that were run.</p><p>If your test run contains failures, the view will look like this:</p><p align="center">
+<img border="0" src="http://testng.org/pictures/failure.png" />
+</p>
+
+<p>You can use the <tt>Failed tests</tt> tab to display only these tests that failed, and 
+when you select such a test, the stack trace will be shown on the right-hand 
+pane.&nbsp; You can double click on the offending line to be taken directly to 
+the failure in your code.</p>
+
+<h3>
+<a name="eclipse-search">5 - Search </a>
+</h3>
+
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/search.png" />
+</p>
+
+<p>When you have hundreds of tests running, finding a specific one is not always easy, so you can type a few letters of the test method or its parameters in the Search box and the content of the tree will automatically narrow down to methods matching your search. Note in the screen shot above that the search also works on parameters provided by <tt>@DataProvider</tt>.</p>
+
+<h3>
+<a name="eclipse-summary">6 - Summary </a>
+</h3>
+
+
+<p align="center"> 
+<img border="0" src="http://testng.org/pictures/summary1.png" />
+</p> 
+<p>The Summary tab gives you statistics on your test run, such as the timings, the test names, the number of methods and classes, etc&#8230; Since the results are shown in a table, you can also sort on any criterion you like for easier parsing. This is especially handy when you are trying to determine what tests take the longest time.</p>
+
+<p>The search box works in this view as well, and note that in the screen shot below, the Time column is sorted in decreasing order:</p> 
+<p align="center"> 
+<img border="0" src="http://testng.org/pictures/summary2.png" />
+
+
+
+<h3><a name="eclipse-quickfix">7 - Converting JUnit tests</a></h3>
+
+You can easily convert JUnit 3 and JUnit 4 tests to TestNG.
+
+<p>
+
+Your first option is to use the Quick Fix function:
+
+<p>
+
+<p align="center"> 
+<img border="0" src="http://testng.org/pictures/convert1.png" />
+<br>
+<b>Convert from JUnit 3</b>
+</p>
+
+<p align="center"> 
+<img border="0" src="http://testng.org/pictures/convert2.png" />
+<br>
+<b>Convert from JUnit 4</b>
+</p>
+
+You can also convert packages or entire source folders with the conversion refactoring:
+
+<p align="center"> 
+<img border="0" src="http://testng.org/pictures/refactoring1.png" />
+</p>
+
+The refactoring wizard contains several pages:
+
+<p align="center"> 
+<img border="0" src="http://beust.com/pics/menu-convert2.png " />
+</p>
+ 
+This page lets you generate a testng.xml automatically. You can configure whether to include your test classes individually or by package, the suite and test name and also whether these tests should run in parallel.
+
+<p align="center"> 
+<img border="0" src="http://testng.org/pictures/refactoring2.png" />
+</p>
+
+This page gives you an overview of the changes that are about to be performed. You can also decide to exclude certain files from the refactoring.
+
+<p>
+
+When you are done, press the "Finish" button. Like all Eclipse refactorings, you can undo all these changes in one click:
+
+<p align="center"> 
+<img border="0" src="http://beust.com/pics/menu-convert4.png" />
+</p>
+
+<h3><a name="eclipse-quickfixes">8 - Quick fixes</a></h3>
+
+The TestNG Eclipse plug-in offers several quick fixes while you are editing a TestNG class (accessible with <tt>Ctrl-1</tt> on Windows/Linux and <tt>&#8984;-1</tt> on Mac OS):
+
+<h4>Convert to JUnit</h4>
+
+This was covered in the <a href="#eclipse-quickfix"> previous section</a>.
+
+<h4>Pushing and pulling <tt>@Test</tt> annotations</h4>
+
+If you have several test methods annotated with <tt>@Test</tt> and you'd like to replace them all with a single <tt>@Test</tt> annotation at the class level, choose the "Pull annotation" quick fix:
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/refactoring-pull-annotation.png" />
+</p>
+
+Reciprocally, you can move a class level <tt>@Test</tt> annotation onto all your public methods:
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/refactoring-push-annotation.png" />
+</p>
+
+<h4>Automatically importing <tt>asserts</tt></h4>
+
+Apply a quick fix on an assert method to automatically import it:
+
+<p align="center">
+<img border="0" src="http://testng.org/pictures/quickfix-import.png" />
+</p>
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-238215-2";
+urchinTracker();
+</script>
+
+</body>

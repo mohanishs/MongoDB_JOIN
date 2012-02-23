@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="JavaDevelopment">
+  <test verbose="10" name="unittest" annotations="JDK">
+
+   <packages>
+      <package name=".*"/>
+    </packages>
+<!-- 
+     <classes>
+      <class name="com.ClassInA" />
+      <class name="com.ClassInB" />
+    </classes>
+ --> 
+
+  </test>
+</suite>

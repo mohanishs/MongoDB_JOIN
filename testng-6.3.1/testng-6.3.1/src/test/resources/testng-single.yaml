@@ -1,0 +1,17 @@
+name: SingleSuite
+verbose: 2
+parameters: {user: "a", passwd: "b", foo: "Cedric" }
+listeners: [ test.configuration.AnnotationDisableListener ]
+
+tests:
+  - name: Test1
+    excludedGroups: [ excludeThisGroup ]
+#    preserveOrder: true
+    classes:
+      - test.tmp.A
+#      - name: test.dependent.SampleDependentTest
+#      - name: test.dependent.SampleDependentMethods2
+#      - name: test.dependent.SampleDependentMethods3
+#        includedMethods: [ excludeMethodsOnly ]
+#       - name: test.sample.Sample2
+#         excludedMethods: [ .*method2 ]
