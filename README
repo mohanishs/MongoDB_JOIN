@@ -1,0 +1,67 @@
+***Read Me for MongoDB_JOINS.***
+________________________________________________________________________
+
+I have worked on performing joins in the MongoDB. This could be a interesting 
+feature to work on. I have implemented a naive join on the collections. There 
+is a room for improvements.
+________________________________________________________________________
+
+The Project Folder Contains the following components.
+
+1) ReadMe.txt - Gives the Installation and Code Running Instructions.
+2) MongoDB Java Driver (mongodb-mongo-java-driver-r2.7.2-49-g78c72b4) - 
+   Which contains the MongoDB drivers and Test files, which also 
+   contains the Modified files.
+3) Testing Framework (testng-6.3.1) - Required for the testing of MongoDB.
+4) Sample Databases (Database.doc)
+
+Besides this you will require to install the latest version of MongoDB on 
+your machine. (Depending on the Platform).
+Link to download MongoDB : http://www.mongodb.org/downloads.
+
+________________________________________________________________________
+
+Setting Up the Project: 
+
+1) Install the MongoDB Binaries.
+
+Use NetBeans:
+
+2) Create a java project, say "Mongo_DB".
+3) Once created, right click on it Source Packages, and in the Sources tab
+   in the Source Package Folders, add
+   "mongodb-mongo-java-driver-r2.7.2-49-g78c72b4\mongodb-mongo-java-driver-78c72b4\src\main"
+   given in the mongo driver folder.
+   In the same way in the Test Package Folders, add	
+   "mongodb-mongo-java-driver-r2.7.2-49-g78c72b4\mongodb-mongo-java-driver-78c72b4\src\test"
+4) Now in the Libraries tab, add testng-6.3.1.jar, which is in the testng-6.3.1 folder.
+5) Now the project setup is done.
+
+__________________________________________________________________________
+
+Running the Project:
+
+1) To test the MongoDB, run the binary files mongod(server) & mongo(client).
+2) To test the java driver, run the file TestDB.java in the Test Package of the project we just created.
+3) This will ensure that the mongoDB was properly installed and all the files are setup.
+4) Setup some sample MongoDB Databases.
+   (If you dont have time - Use the ones provided in Databases.doc :-)
+5) So in the client we started, copy paste the collections in the Database.doc file (As mongo prompt uses JS).
+6) This will create the collections. Take note of the collection names, database names, and column names
+   as it will be required to perform the joins. (Database name is "test" by default)
+7) Now you have the collections setup and ready to be joined.
+8) To run the GUI - Go in the Test Package in th project, 
+   i.e. - mongodb-mongo-java-driver-r2.7.2-49-g78c72b4\mongodb-mongo-java-driver-78c72b4\src\test
+   in that go to package com.mongodb, and in that we have two files that we have created MongoUI.java and 
+   Joins.java. You only have to open the MongoUI.java file. Run that file.
+9) Now you need to insert the DB name (usually - "test"), insert collection names and the column on which
+   join is to be performed. And hit join. to get the result in the result area.
+10) Done.
+
+___________________________________________________________________________
+
+Mongo Commands :
+
+To know common Mongo Commands check : http://www.mongodb.org/display/DOCS/Manual.
+
+____________________________________________________________________________
